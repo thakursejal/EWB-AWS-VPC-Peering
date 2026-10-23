@@ -1,7 +1,7 @@
 
 # AWS VPC Peering Architecture
 
-![AWS VPC Peering Architecture](image/aws-vpc-peering-architecture.png)
+![AWS VPC Peering Architecture](Image/aws-vpc-peering-architecture.png)
 
 # AWS VPC Peering Architecture
 
