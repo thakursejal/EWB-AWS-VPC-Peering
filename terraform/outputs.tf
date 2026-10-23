@@ -29,6 +29,36 @@ output "vpc_b_private_subnet_id" {
   value       = aws_subnet.b_private.id
 }
 
+output "vpc_a_public_route_table_id" {
+  description = "ID of the public route table in VPC A"
+  value       = aws_route_table.a_public.id
+}
+
+output "vpc_a_private_route_table_id" {
+  description = "ID of the private route table in VPC A"
+  value       = aws_route_table.a_private.id
+}
+
+output "vpc_b_private_route_table_id" {
+  description = "ID of the private route table in VPC B"
+  value       = aws_route_table.b_private.id
+}
+
+output "bastion_security_group_id" {
+  description = "ID of the bastion security group"
+  value       = aws_security_group.bastion.id
+}
+
+output "app_a_security_group_id" {
+  description = "ID of the App-A security group"
+  value       = aws_security_group.app_a.id
+}
+
+output "app_b_security_group_id" {
+  description = "ID of the App-B security group"
+  value       = aws_security_group.app_b.id
+}
+
 output "bastion_instance_id" {
   description = "ID of the bastion EC2 instance"
   value       = aws_instance.bastion.id
@@ -37,6 +67,11 @@ output "bastion_instance_id" {
 output "bastion_public_ip" {
   description = "Public IPv4 address of the bastion host"
   value       = aws_instance.bastion.public_ip
+}
+
+output "bastion_private_ip" {
+  description = "Private IP address of the bastion host"
+  value       = aws_instance.bastion.private_ip
 }
 
 output "app_a_instance_id" {
