@@ -1,3 +1,4 @@
+
 # Bastion host security group
 resource "aws_security_group" "bastion" {
   name        = "ewb-sg-bastion"
@@ -31,11 +32,13 @@ resource "aws_security_group" "app_a" {
   vpc_id      = aws_vpc.vpc_a.id
 
   ingress {
-    description = "SSH from bastion host"
+    description = "SSH from bastion security group"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["10.10.1.10/32"]
+    security_groups = [
+      aws_security_group.bastion.id
+    ]
   }
 
   ingress {
@@ -65,11 +68,13 @@ resource "aws_security_group" "app_b" {
   vpc_id      = aws_vpc.vpc_b.id
 
   ingress {
-    description = "SSH from bastion host"
+    description = "SSH from bastion security group"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["10.10.1.10/32"]
+    security_groups = [
+      aws_security_group.bastion.id
+    ]
   }
 
   ingress {
