@@ -51,3 +51,27 @@
 | ICMP rule restored | Ping succeeds when all required paths and rules are correct | Pending |
 
 **Status:** These are planned validation steps. Update the actual-result column only after performing and recording each test in the target AWS environment.
+## Required Connectivity Tests
+
+### 1. Private IP Address Verification
+- [ ] Confirm the bastion instance has a public IPv4 address.
+- [ ] Confirm App-A has no public IPv4 address.
+- [ ] Confirm App-B has no public IPv4 address.
+
+### 2. VPC Peering Connectivity
+- [ ] Verify the VPC peering connection is active.
+- [ ] Verify VPC A has a route to `10.20.0.0/16` through the peering connection.
+- [ ] Verify VPC B has a route to `10.10.0.0/16` through the peering connection.
+- [ ] Test ping from App-A (`10.10.2.10`) to App-B (`10.20.1.10`).
+- [ ] Test ping from App-B (`10.20.1.10`) to App-A (`10.10.2.10`).
+- [ ] Verify SSH access to both private instances through the bastion.
+
+### 3. Security Rule Verification
+- [ ] Verify SSH access to the bastion is restricted to the administrator's IP.
+- [ ] Verify private instances accept SSH only from the bastion.
+- [ ] Temporarily remove the required ICMP rule, confirm ping fails, then restore the rule and confirm connectivity.
+
+### 4. Evidence and Cleanup
+- [ ] Capture screenshots of route tables and the active peering connection.
+- [ ] Record actual connectivity test results.
+- [ ] Verify all project resources are deleted after testing.
