@@ -10,7 +10,9 @@ resource "aws_key_pair" "lab" {
   public_key = var.ssh_public_key
 
   tags = {
-    Name = "ewb-lab"
+    Name    = "ewb-lab"
+    Project = "EWB-VPC-Peering"
+    Student = var.student_name
   }
 }
 
@@ -25,7 +27,9 @@ resource "aws_instance" "bastion" {
   key_name                    = aws_key_pair.lab.key_name
 
   tags = {
-    Name = "ewb-bastion"
+    Name    = "ewb-bastion"
+    Project = "EWB-VPC-Peering"
+    Student = var.student_name
   }
 }
 
@@ -40,7 +44,9 @@ resource "aws_instance" "app_a" {
   key_name                    = aws_key_pair.lab.key_name
 
   tags = {
-    Name = "ewb-app-a"
+    Name    = "ewb-app-a"
+    Project = "EWB-VPC-Peering"
+    Student = var.student_name
   }
 }
 
@@ -55,6 +61,8 @@ resource "aws_instance" "app_b" {
   key_name                    = aws_key_pair.lab.key_name
 
   tags = {
-    Name = "ewb-app-b"
+    Name    = "ewb-app-b"
+    Project = "EWB-VPC-Peering"
+    Student = var.student_name
   }
 }
