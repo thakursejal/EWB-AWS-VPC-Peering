@@ -28,3 +28,33 @@ output "vpc_b_private_subnet_id" {
   description = "ID of the private subnet in VPC B"
   value       = aws_subnet.b_private.id
 }
+
+output "bastion_instance_id" {
+  description = "ID of the bastion EC2 instance"
+  value       = aws_instance.bastion.id
+}
+
+output "bastion_public_ip" {
+  description = "Public IPv4 address of the bastion host"
+  value       = aws_instance.bastion.public_ip
+}
+
+output "app_a_instance_id" {
+  description = "ID of the private EC2 instance in VPC A"
+  value       = aws_instance.app_a.id
+}
+
+output "app_a_private_ip" {
+  description = "Private IP address of application instance A"
+  value       = aws_instance.app_a.private_ip
+}
+
+output "app_b_instance_id" {
+  description = "ID of the private EC2 instance in VPC B"
+  value       = aws_instance.app_b.id
+}
+
+output "app_b_private_ip" {
+  description = "Private IP address of application instance B"
+  value       = aws_instance.app_b.private_ip
+}
