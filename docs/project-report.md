@@ -82,3 +82,38 @@ Document the cleanup of all resources created for the lab, including EC2 instanc
 **Current status:** Infrastructure configuration and documentation prepared. Live deployment, connectivity tests, and cleanup evidence remain pending.
 
 Do not mark deployment or testing as completed until supported by actual results.
+
+## Architecture and Implementation Evidence
+
+### Network Architecture
+Refer to [AWS VPC Peering Architecture](architecture.md) for the network diagram and IP address plan.
+
+### Resource Inventory
+Record the actual AWS resource IDs after deployment.
+
+| Resource | Name | Resource ID |
+|---|---|---|
+| VPC A | ewb-vpc-a | |
+| VPC B | ewb-vpc-b | |
+| VPC Peering | ewb-a-b-peer | |
+| Internet Gateway | ewb-igw-a | |
+| Bastion EC2 | ewb-bastion | |
+| App-A EC2 | ewb-app-a | |
+| App-B EC2 | ewb-app-b | |
+
+### Test Evidence
+For each test, record the actual result and attach a screenshot.
+
+- VPC peering status: 
+- App-A to App-B connectivity:
+- App-B to App-A connectivity:
+- SSH through bastion:
+- Private instances have no public IPv4:
+- ICMP rule removal and restoration test:
+
+### Lessons Learned
+Document what you learned about VPC CIDR ranges, route tables, VPC peering, security groups, and private connectivity.
+
+### Cleanup Verification
+Record the cleanup actions and verify that all project resources have been removed.
+
