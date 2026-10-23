@@ -135,3 +135,29 @@ References
 - "Update route tables for peering" (https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-routing.html)
 - "Security groups for peered VPCs" (https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-security-groups.html)
 - "Amazon VPC pricing" (https://aws.amazon.com/vpc/pricing/)
+
+
+## Architecture Diagram
+
+The project uses VPC peering to enable private IPv4 communication between two VPCs. A bastion host in VPC A provides controlled SSH access to private EC2 instances.
+
+![AWS VPC Peering Architecture](docs/Images/aws-vpc-peering-architecture.png)
+
+## Key Security Controls
+
+- SSH access to the bastion is restricted to the administrator's public IP.
+- App-A and App-B do not require public IPv4 addresses.
+- Private workloads communicate through VPC peering and explicit route-table entries.
+- Security groups restrict SSH and ICMP traffic to specified sources.
+
+## Documentation
+
+- [Architecture and IP Address Plan](docs/architecture.md)
+- [Connectivity Validation Checklist](docs/validation-checklist.md)
+- [Project Report](docs/project-report.md)
+- [Terraform Configuration Guide](terraform/README.md)
+
+## Important
+
+Run the connectivity tests and record the actual results before submitting the final report. Remove all AWS resources after testing to avoid ongoing charges.
+
