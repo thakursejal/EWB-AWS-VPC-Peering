@@ -1,10 +1,12 @@
-aws_region    = "ap-south-1"
+
+# AWS Region for the EWB VPC Peering project
+aws_region = "ap-south-1"
+
+# EC2 instance size
 instance_type = "t3.micro"
 
-# Replace with the administrator's public IPv4 address.
-# Use a single address with /32 notation.
-admin_ip_cidr = "203.0.113.10/32"
+# Replace with your own current public IPv4 address followed by /32
+admin_ip_cidr = "REPLACE_WITH_YOUR_PUBLIC_IP/32"
 
-# Replace with the contents of your SSH public key.
-# Never put a private SSH key in this file.
-ssh_public_key = "ssh-ed25519 AAAA_REPLACE_WITH_YOUR_PUBLIC_KEY"
+# Replace with your SSH public key (not your private key)
+ssh_public_key = "REPLACE_WITH_YOUR_SSH_PUBLIC_KEY"
