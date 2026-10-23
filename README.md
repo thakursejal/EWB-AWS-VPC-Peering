@@ -141,7 +141,7 @@ References
 
 The project uses VPC peering to enable private IPv4 communication between two VPCs. A bastion host in VPC A provides controlled SSH access to private EC2 instances.
 
-![AWS VPC Peering Architecture](docs/Images/aws-vpc-peering-architecture.png)
+![AWS VPC Peering Architecture](docs/Image/aws-vpc-peering-architecture.png)
 
 ## Key Security Controls
 
