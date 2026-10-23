@@ -1,6 +1,10 @@
 
 # AWS VPC Peering Architecture
 
+![AWS VPC Peering Architecture](image/aws-vpc-peering-architecture.png)
+
+# AWS VPC Peering Architecture
+
 ## Overview
 
 The architecture demonstrates private network connectivity between two Amazon Virtual Private Clouds (VPCs) using VPC Peering.
