@@ -1,11 +1,12 @@
 
+# Security group for the public bastion
 resource "aws_security_group" "bastion" {
   name        = "ewb-sg-bastion"
-  description = "SSH access to the public bastion from the administrator IP"
-  vpc_id      = aws_vpc.a.id
+  description = "SSH access from the administrator IP only"
+  vpc_id      = aws_vpc.vpc_a.id
 
   ingress {
-    description = "SSH from administrator public IP only"
+    description = "SSH from administrator public IP"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
@@ -21,14 +22,17 @@ resource "aws_security_group" "bastion" {
   }
 
   tags = {
-    Name = "ewb-sg-bastion"
+    Name    = "ewb-sg-bastion"
+    Project = "EWB-VPC-Peering"
+    Student = var.student_name
   }
 }
 
+# Security group for App-A in VPC A
 resource "aws_security_group" "app_a" {
   name        = "ewb-sg-app-a"
   description = "Restricted SSH and ICMP for App-A"
-  vpc_id      = aws_vpc.a.id
+  vpc_id      = aws_vpc.vpc_a.id
 
   ingress {
     description = "SSH from bastion private IP"
@@ -55,14 +59,17 @@ resource "aws_security_group" "app_a" {
   }
 
   tags = {
-    Name = "ewb-sg-app-a"
+    Name    = "ewb-sg-app-a"
+    Project = "EWB-VPC-Peering"
+    Student = var.student_name
   }
 }
 
+# Security group for App-B in VPC B
 resource "aws_security_group" "app_b" {
   name        = "ewb-sg-app-b"
   description = "Restricted SSH and ICMP for App-B"
-  vpc_id      = aws_vpc.b.id
+  vpc_id      = aws_vpc.vpc_b.id
 
   ingress {
     description = "SSH from bastion private IP"
@@ -89,6 +96,8 @@ resource "aws_security_group" "app_b" {
   }
 
   tags = {
-    Name = "ewb-sg-app-b"
+    Name    = "ewb-sg-app-b"
+    Project = "EWB-VPC-Peering"
+    Student = var.student_name
   }
 }
