@@ -4,7 +4,6 @@ resource "aws_security_group" "bastion" {
   name        = "ewb-sg-bastion"
   description = "SSH access from the administrator IP only"
   vpc_id      = aws_vpc.vpc_a.id
-
   ingress {
     description = "SSH from administrator public IP"
     from_port   = 22
@@ -12,7 +11,6 @@ resource "aws_security_group" "bastion" {
     protocol    = "tcp"
     cidr_blocks = [var.admin_ip_cidr]
   }
-
   egress {
     description = "Allow outbound traffic"
     from_port   = 0
@@ -33,8 +31,6 @@ resource "aws_security_group" "app_a" {
   name        = "ewb-sg-app-a"
   description = "Restricted SSH and ICMP for App-A"
   vpc_id      = aws_vpc.vpc_a.id
-
-
   ingress {
     description = "SSH from bastion private IP"
     from_port   = 22
@@ -42,9 +38,6 @@ resource "aws_security_group" "app_a" {
     protocol    = "tcp"
     cidr_blocks = ["10.10.1.10/32"]
   }
-
-
-  
   ingress {
     description = "ICMP echo requests from App-B"
     from_port   = 8
@@ -52,7 +45,6 @@ resource "aws_security_group" "app_a" {
     protocol    = "icmp"
     cidr_blocks = ["10.20.1.10/32"]
   }
-
   egress {
     description = "Allow outbound traffic"
     from_port   = 0
@@ -73,8 +65,6 @@ resource "aws_security_group" "app_b" {
   name        = "ewb-sg-app-b"
   description = "Restricted SSH and ICMP for App-B"
   vpc_id      = aws_vpc.vpc_b.id
-
-
   ingress {
     description = "SSH from bastion private IP"
     from_port   = 22
@@ -82,9 +72,6 @@ resource "aws_security_group" "app_b" {
     protocol    = "tcp"
     cidr_blocks = ["10.10.1.10/32"]
   }
-
-
-  
   ingress {
     description = "ICMP echo requests from App-A"
     from_port   = 8
@@ -92,7 +79,6 @@ resource "aws_security_group" "app_b" {
     protocol    = "icmp"
     cidr_blocks = ["10.10.2.10/32"]
   }
-
   egress {
     description = "Allow outbound traffic"
     from_port   = 0
