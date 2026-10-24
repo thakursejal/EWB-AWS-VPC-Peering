@@ -34,6 +34,16 @@ resource "aws_security_group" "app_a" {
   description = "Restricted SSH and ICMP for App-A"
   vpc_id      = aws_vpc.vpc_a.id
 
+
+  ingress {
+    description = "SSH from bastion private IP"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["10.10.1.10/32"]
+  }
+
+
   
   ingress {
     description = "ICMP echo requests from App-B"
@@ -63,6 +73,16 @@ resource "aws_security_group" "app_b" {
   name        = "ewb-sg-app-b"
   description = "Restricted SSH and ICMP for App-B"
   vpc_id      = aws_vpc.vpc_b.id
+
+
+  ingress {
+    description = "SSH from bastion private IP"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["10.10.1.10/32"]
+  }
+
 
   
   ingress {
